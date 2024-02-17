@@ -7,10 +7,11 @@ use_step_matcher("re")
 
 @step("que el Cliente ha realizado el pago y el proceso de envío de la compra ha finalizado")
 def step_impl(context):
-    context.cliente = Cliente("identificador","nombres", "apellidos", "correoElectronico", "numeroTelefonico")
-    context.producto = Producto("identificador", "nombre", "descripcion", "calificacion")
+    context.producto = Producto(1, "Martillo", "De madera", 3)
+    context.arregloProductos = [context.producto]
     context.servicio = Servicio()
-    context.pedido = Pedido("identificador", "estado", "cantidad", "direccion", context.cliente, context.producto, context.servicio)
+    context.pedido = Pedido(1, "Entregado", 6, "direccion", context.arregloProductos, context.servicio)
+    context.cliente = Cliente("identificador","nombres", "apellidos", "correoElectronico", "numeroTelefonico", context.pedido)
 
     assert context.pedido.estado == "Entregado" and context.pedido.pagado, "No se entrego el pedido correctamente"
 
@@ -18,6 +19,8 @@ def step_impl(context):
 @step(
     "el Cliente envíe una Calificación entre uno y cinco estrellas del Producto y del Servicio, y mencione los motivos de su Calificación\.")
 def step_impl(context):
+    context.cliente.calificar_producto(1,1,3,"Mala calidad")
+    context.cliente.calificar_servicio(1,3, "Tarde")
     context.calificacion_producto = context.producto.calificacion
     context.calificacion_servicio = context.servicio.calificacion
     context.motivos_calificacion_producto = context.producto.obtener_motivos_calificacion_producto()
@@ -28,6 +31,9 @@ def step_impl(context):
         and context.motivos_calificacion_producto is not None and len(context.motivos_calificacion_producto) > 0
         and context.motivos_calificacion_servicio is not None and len(context.motivos_calificacion_servicio) > 0
     ), "La calificación del producto o del servicio no es válida o los motivos no han sido proporcionados"
+
+
+
 
 
 @step("la valoración total de calificaciones del (?P<item_de_calificacion>.+)  aumentarán")

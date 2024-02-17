@@ -1,20 +1,20 @@
 class Cliente:
-    def __init__(self, identificador, nombres, apellidos, correoElectronico,numeroTelefonico):
+    def __init__(self, identificador, nombres, apellidos, correoElectronico,numeroTelefonico, pedido):
         self.identificador = identificador
         self.nombres = nombres
         self.apellidos = apellidos
         self.correoElectronico = correoElectronico
         self.numeroTelefonico = numeroTelefonico
-        self.pedidos = []
+        self.pedidos = [pedido]
 
     def calificar_producto(self, identificador_pedido, identificador_producto, calificacion, motivo_calificacion):
-        pedido = self.encontrarPedidoPorIdentificador(identificador_pedido)
+        pedido = self.encontrar_pedido_por_identificador(identificador_pedido)
         if pedido:
             producto_encontrado = None
             for producto in pedido.productos:
                 if producto.identificador == identificador_producto:
                     producto.calificacion = calificacion
-                    producto.agregarMotivoCalificacion(motivo_calificacion)
+                    producto.agregar_motivo_calificacion(motivo_calificacion)
                     producto_encontrado = producto
                     break
 
@@ -24,10 +24,10 @@ class Cliente:
             print(f"No se encontró un pedido con identificador {identificador_pedido}")
 
     def calificar_servicio(self, identificador_pedido, calificacion, motivo_calificacion):
-        pedido = self.encontrarPedidoPorIdentificador(identificador_pedido)
+        pedido = self.encontrar_pedido_por_identificador(identificador_pedido)
         if pedido:
             pedido.servicio.calificacion = calificacion
-            pedido.servicio.agregarMotivoCalificacion(motivo_calificacion)
+            pedido.servicio.agregar_motivo_calificacion(motivo_calificacion)
         else:
             print(f"No se encontró un pedido con identificador {identificador_pedido}")
 
@@ -62,12 +62,11 @@ class Servicio:
         return self.motivos_calificacion
 
 class Pedido:
-    def __init__(self, identificador, estado, cantidad, direccion, cliente, productos, servicio):
+    def __init__(self, identificador, estado, cantidad, direccion, productos, servicio):
         self.identificador = identificador
         self.estado = estado
         self.cantidad = cantidad
         self.direccion = direccion
-        self.cliente = cliente
         self.productos = productos
         self.servicio = servicio
         self.pagado = True
