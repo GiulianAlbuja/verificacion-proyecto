@@ -7,7 +7,7 @@ Característica: Recolección de feedback de compras de los clientes (servicio/p
   Escenario: Obtener feedback de las calificaciones de los clientes sobre el producto
     Dado que el Cliente ha realizado el pago y el proceso de envío de la compra ha finalizado
     Y se tiene un Producto con las siguientes valoraciones totales
-      | total de calificaciones | cantidad de estrellas | porcentaje de calificaciones |
+      | total_de_calificaciones | cantidad_de_estrellas | porcentaje_de_calificaciones |
       | 10                      | 5                     | 30%                          |
       | 5                       | 4                     | 16%                          |
       | 2                       | 3                     | 6%                           |
@@ -24,22 +24,20 @@ Característica: Recolección de feedback de compras de los clientes (servicio/p
       | Mala calidad de materiales      |
       | Malos acabados                  |
       | Mal funcionamiento              |
-    Entonces la valoración total de calificaciones de 3 estrellas del Producto aumentará en 1 de la siguiente manera
-      | total de calificaciones | cantidad de estrellas |
-      | 3                       | 3                     |
-    Y el vendedor podrá visualizar  el siguiente reporte
-      | Cantidad de estrellas | Porcentaje de calificaciones | causas                                          |
-      | 1                     | 29%                          | No concuerda con la descripción, Malos acabados |
-      | 2                     | 15%                          | Mala calidad de materiales, Mal funcionamiento  |
-      | 3                     | 9%                           | Mal funcionamiento                              |
-      | 4                     | 18%                          | Buen funcionamiento, Malos acabados             |
-      | 5                     | 29%                          | Buenos acabados                                 |
+    Entonces la valoración total de calificaciones de 3 estrellas del Producto aumentará en 1
+    Y el vendedor podrá visualizar el siguiente reporte
+      | cantidad_de_estrellas | porcentaje_de_calificaciones | causas                                                  |
+      | 1                     | 29%                          | No concuerda con la descripción (6), Malos acabados (4) |
+      | 2                     | 15%                          | Mala calidad de materiales(5), Mal funcionamiento (1)   |
+      | 3                     | 9%                           | Mal funcionamiento (2)                                  |
+      | 4                     | 18%                          | Buen funcionamiento (3), Malos acabados (2)             |
+      | 5                     | 29%                          | Buenos acabados (2)                                     |
 
 
   Escenario: Obtener feedback de las calificaciones de los clientes sobre el servicio
     Dado que el Cliente ha dado su feedback sobre el producto
     Y se tiene un Servicio con las siguientes valoraciones totales
-      | total de calificaciones | cantidad de estrellas | porcentaje de calificaciones |
+      | total_de_calificaciones | cantidad_de_estrellas | porcentaje_de_calificaciones |
       | 10                      | 5                     | 30%                          |
       | 5                       | 4                     | 16%                          |
       | 2                       | 3                     | 6%                           |
@@ -53,12 +51,10 @@ Característica: Recolección de feedback de compras de los clientes (servicio/p
       | Entrega a tiempo |
       | Entrega rápida   |
     Entonces la valoración total de calificaciones de 3 estrellas del Servicio aumentará en 1 de la siguiente manera
-      | total de calificaciones | cantidad de estrellas |
-      | 3                       | 3                     |
     Y el vendedor podrá visualizar el siguiente reporte con todas las causas en orden descendente
-      | Cantidad de estrellas | Porcentaje de calificaciones | causas                           |
-      | 1                     | 10%                          | Paquete dañado (4)                  |
-      | 2                     | 5%                           | Entrega tardía (2)                  |
+      | cantidad_de_estrellas | porcentaje_de_calificaciones | causas                                   |
+      | 1                     | 10%                          | Paquete dañado (4)                       |
+      | 2                     | 5%                           | Entrega tardía (2)                       |
       | 3                     | 5%                           | Entrega a tiempo (3), Paquete dañado (1) |
       | 4                     | 10%                          | Paquete dañado (3), Entrega rápida (2)   |
-      | 5                     | 70%                          | Entrega a tiempo (1)                |
+      | 5                     | 70%                          | Entrega a tiempo (1)                     |
