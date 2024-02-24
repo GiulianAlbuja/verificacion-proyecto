@@ -8,13 +8,13 @@ Característica: Recolección de feedback de compras de los clientes (servicio/p
     Dado que el Cliente ha realizado el pago y el proceso de envío de la compra ha finalizado
     Y se tiene un Producto con las siguientes valoraciones totales
       | total_de_calificaciones | cantidad_de_estrellas | porcentaje_de_calificaciones |
-      | 10                      | 5                     | 30%                          |
-      | 5                       | 4                     | 16%                          |
-      | 2                       | 3                     | 6%                           |
-      | 6                       | 2                     | 18%                          |
-      | 10                      | 1                     | 30%                          |
+      | 0                       | 1                     | 0%                           |
+      | 1                       | 2                     | 25%                          |
+      | 1                       | 3                     | 25%                          |
+      | 0                       | 4                     | 0%                           |
+      | 2                       | 5                     | 50%                          |
     Cuando el Cliente envíe una Calificación de tres sobre cinco estrellas del Producto
-    Y seleccione algunas de las siguientes causas de su Calificación
+    Y seleccione algunas de las siguientes causas de su Calificación para el Producto
       | causas                          |
       | Buenos acabados                 |
       | Concuerda con la descripción    |
@@ -26,12 +26,12 @@ Característica: Recolección de feedback de compras de los clientes (servicio/p
       | Mal funcionamiento              |
     Entonces la valoración total de calificaciones de 3 estrellas del Producto aumentará en 1
     Y el vendedor podrá visualizar el siguiente reporte
-      | cantidad_de_estrellas | porcentaje_de_calificaciones | causas                                                  |
-      | 1                     | 29%                          | No concuerda con la descripción (6), Malos acabados (4) |
-      | 2                     | 15%                          | Mala calidad de materiales(5), Mal funcionamiento (1)   |
-      | 3                     | 9%                           | Mal funcionamiento (2)                                  |
-      | 4                     | 18%                          | Buen funcionamiento (3), Malos acabados (2)             |
-      | 5                     | 29%                          | Buenos acabados (2)                                     |
+      | cantidad_de_estrellas | porcentaje_de_calificaciones | causas                                               |
+      | 1                     | 0%                           |                                                      |
+      | 2                     | 20%                          | Mala calidad de materiales (1)                       |
+      | 3                     | 40%                          | Mal funcionamiento (2)                               |
+      | 4                     | 0%                           |                                                      |
+      | 5                     | 40%                          | Buenos acabados (2), Buena calidad de materiales (2) |
 
 
   Escenario: Obtener feedback de las calificaciones de los clientes sobre el servicio
