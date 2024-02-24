@@ -38,11 +38,11 @@ Característica: Recolección de feedback de compras de los clientes (servicio/p
     Dado que el Cliente ha dado su feedback sobre el producto
     Y se tiene un Servicio con las siguientes valoraciones totales
       | total_de_calificaciones | cantidad_de_estrellas | porcentaje_de_calificaciones |
-      | 10                      | 5                     | 30%                          |
-      | 5                       | 4                     | 16%                          |
-      | 2                       | 3                     | 6%                           |
-      | 6                       | 2                     | 18%                          |
       | 10                      | 1                     | 30%                          |
+      | 6                       | 2                     | 16%                          |
+      | 2                       | 3                     | 6%                           |
+      | 5                       | 4                     | 18%                          |
+      | 10                      | 5                     | 30%                          |
     Cuando el Cliente envíe una Calificación de tres sobre cinco estrellas del Servicio
     Y seleccione algunas de las siguientes causas de su Calificación
       | causas           |
@@ -53,8 +53,8 @@ Característica: Recolección de feedback de compras de los clientes (servicio/p
     Entonces la valoración total de calificaciones de 3 estrellas del Servicio aumentará en 1 de la siguiente manera
     Y el vendedor podrá visualizar el siguiente reporte con todas las causas en orden descendente
       | cantidad_de_estrellas | porcentaje_de_calificaciones | causas                                   |
-      | 1                     | 10%                          | Paquete dañado (4)                       |
-      | 2                     | 5%                           | Entrega tardía (2)                       |
-      | 3                     | 5%                           | Entrega a tiempo (3), Paquete dañado (1) |
-      | 4                     | 10%                          | Paquete dañado (3), Entrega rápida (2)   |
-      | 5                     | 70%                          | Entrega a tiempo (1)                     |
+      | 1                     | 29%                          | Paquete dañado (4)                       |
+      | 2                     | 15%                           | Entrega tardía (2)                       |
+      | 3                     | 9%                           | Entrega a tiempo (3), Paquete dañado (1) |
+      | 4                     | 18%                          | Paquete dañado (3), Entrega rápida (2)   |
+      | 5                     | 29%                          | Entrega a tiempo (1)                     |
