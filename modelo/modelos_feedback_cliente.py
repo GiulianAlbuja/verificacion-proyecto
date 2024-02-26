@@ -32,37 +32,48 @@ class Cliente:
         self.pedido = pedido
 
     def calificar_producto(self, calificacion):
-        calificacion.producto.calificaciones[calificacion.estrellas] += 1
-        calificacion.producto.calificaiones_recibidas.append(calificacion)
+        calificacion.producto.puntuaciones_calificaciones[calificacion.estrellas] += 1
+        calificacion.producto.calificaciones_recibidas.append(calificacion)
+
+    def calificar_servicio(self, pedido, estrellas, causas, producto):
+        calificacion = Calificacion(estrellas, causas, producto)
+        pedido.servicio.agregar_calificacion(calificacion)
 
 
 class Servicio:
     def __init__(self, pedido):
         self.pedido = pedido
 
-        self.calificaciones = [
-            {'estrellas': 1, "cantidad": 0, "porcentaje": "0"},
-            {'estrellas': 2, "cantidad": 0, "porcentaje": "0"},
-            {'estrellas': 3, "cantidad": 0, "porcentaje": "0"},
-            {'estrellas': 4, "cantidad": 0, "porcentaje": "0"},
-            {'estrellas': 5, "cantidad": 0, "porcentaje": "0"}
+        self.puntuaciones_calificaciones = [
+            {'estrellas': 1, "cantidad": 10, "porcentaje": "30%"},
+            {'estrellas': 2, "cantidad": 6, "porcentaje": "16%"},
+            {'estrellas': 3, "cantidad": 2, "porcentaje": "6%"},
+            {'estrellas': 4, "cantidad": 5, "porcentaje": "18"},
+            {'estrellas': 5, "cantidad": 10, "porcentaje": "30%"}
         ]
+        self.calificaciones_recibidas = list()
 
-        self.calificaiones_recibidas = list()
-    def calificar_servicio(self, calificacion_cliente):
-        for calificacion in self.calificaciones:
+    def aumentar_estrella(self, calificacion_cliente):
+        for calificacion in self.puntuaciones_calificaciones:
             if calificacion["estrellas"] == calificacion_cliente:
                 calificacion["cantidad"] += 1
                 break
         self.calcular_porcentajes()
 
+    def agregar_calificacion(self, calificacion):
+        self.calificaciones_recibidas.append(calificacion)
+        self.aumentar_estrella(calificacion.estrellas)
 
     def calcular_porcentajes(self):
-        total_estrellas = sum(calificacion["cantidad"] for calificacion in self.calificaciones)
-        for calificacion in self.calificaciones:
+        total_estrellas = sum(calificacion["cantidad"] for calificacion in self.puntuaciones_calificaciones)
+        for calificacion in self.puntuaciones_calificaciones:
             porcentaje_calculado = (calificacion["cantidad"] / total_estrellas) * 100
             porcentaje_calculado = round(porcentaje_calculado)
             calificacion["porcentaje"] = str(porcentaje_calculado) + "%"
 
 
-
+class Calificacion:
+    def __init__(self, estrellas, causas, producto):
+        self.estrellas = estrellas
+        self.causas = causas  # arreglo
+        self.producto = producto

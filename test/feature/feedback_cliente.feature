@@ -39,12 +39,12 @@ Característica: Recolección de feedback de compras de los clientes (servicio/p
     Y se tiene un Servicio con las siguientes valoraciones totales
       | total_de_calificaciones | cantidad_de_estrellas | porcentaje_de_calificaciones |
       | 10                      | 1                     | 30%                          |
-      | 6                       | 2                     | 16%                          |
+      | 6                       | 2                     | 18%                          |
       | 2                       | 3                     | 6%                           |
-      | 5                       | 4                     | 18%                          |
+      | 5                       | 4                     | 15%                          |
       | 10                      | 5                     | 30%                          |
     Cuando el Cliente envíe una Calificación de tres sobre cinco estrellas del Servicio
-    Y seleccione algunas de las siguientes causas de su Calificación
+    Y seleccione algunas de las siguientes causas de su Calificación del Servicio
       | causas           |
       | Paquete dañado   |
       | Entrega tardía   |
