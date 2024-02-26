@@ -17,22 +17,6 @@ class Producto:
     def feedback_producto_esta_dado(self):
         return True
 
-    def __init__(self, id, nombre, descripcion):
-        self.id_producto = id
-        self.nombre_producto = nombre
-        self.descripcion = descripcion
-        self.calificaciones = {1: 0, 2: 1, 3: 1, 4: 0, 5: 2}
-        self.calificaciones_recibidas = list()
-        causas = ["Mala calidad de materiales"]
-        self.calificaciones_recibidas.append(Calificacion(2, causas, self))
-        causas = ["Mal funcionamiento"]
-        self.calificaciones_recibidas.append(Calificacion(3, causas, self))
-        causas = ["Buenos acabados", "Buena calidad de materiales"]
-        self.calificaciones_recibidas.append(Calificacion(5, causas, self))
-        causas = ["Buenos acabados", "Buena calidad de materiales"]
-        self.calificaciones_recibidas.append(Calificacion(5, causas, self))
-
-
     def obtener_porcentajes_de_calificaciones(self):
         porcentajes_por_estrella = list()
         calificaciones_totales = 0
